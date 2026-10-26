@@ -1,0 +1,202 @@
+# TWO-LIFT SIMULATION: FIVE FLOORS
+
+MAX_WEIGHT = 1300
+PASSENGER_WEIGHT = 60  # Assumed weight per passenger (kg)
+
+lift1_start = 1
+lift1_weight = float(input("Weight of people in Lift 1 at floor 1 (kg): "))
+
+lift2_start = 5
+lift2_weight = float(input("Weight of people in Lift 2 at floor 5 (kg): "))
+
+
+# Collect UP and DOWN destinations at each floor
+up_requests = [[] for _ in range(6)]
+down_requests = [[] for _ in range(6)]
+
+for floor in range(1, 6):
+
+    if floor < 5:
+        answer = input(f"UP button pressed at floor {floor}? (y/n): ")
+
+        while answer.lower() == "y":
+            destination = int(input("Destination floor: "))
+            up_requests[floor].append(destination)
+
+            answer = input("Another destination? (y/n): ")
+
+    if floor > 1:
+        answer = input(f"DOWN button pressed at floor {floor}? (y/n): ")
+
+        while answer.lower() == "y":
+            destination = int(input("Destination floor: "))
+            down_requests[floor].append(destination)
+
+            answer = input("Another destination? (y/n): ")
+
+
+# LIFT 1: FLOOR 1 TO FLOOR 5
+print("\n===== LIFT 1: MOVING UP =====")
+
+weight = lift1_weight
+passengers = []
+
+if weight <= MAX_WEIGHT:
+    for floor in range(lift1_start, 6):
+        print("\nLift 1 reaches floor", floor)
+
+        # Passengers get off at their destination
+        for destination in passengers[:]:
+            if destination == floor:
+                weight -= PASSENGER_WEIGHT
+                passengers.remove(destination)
+                print("Passenger gets off.")
+
+        # Passengers board
+        for destination in up_requests[floor]:
+            if weight + PASSENGER_WEIGHT <= MAX_WEIGHT:
+                weight += PASSENGER_WEIGHT
+                passengers.append(destination)
+                print("Passenger boards for floor", destination)
+            else:
+                print("Lift is full. Passenger cannot board.")
+
+        print("Current weight:", weight, "kg")
+
+    print("Lift 1 stops at floor 5.")
+else:
+    print("ALARM! Lift 1 exceeds the weight limit.")
+
+
+# LIFT 2: FLOOR 5 TO FLOOR 1
+print("\n===== LIFT 2: MOVING DOWN =====")
+
+weight = lift2_weight
+passengers = []
+
+if weight <= MAX_WEIGHT:
+    for floor in range(lift2_start, 0, -1):
+        print("\nLift 2 reaches floor", floor)
+
+        # Passengers get off at their destination
+        for destination in passengers[:]:
+            if destination == floor:
+                weight -= PASSENGER_WEIGHT
+                passengers.remove(destination)
+                print("Passenger gets off.")
+
+        # Passengers board
+        for destination in down_requests[floor]:
+            if weight + PASSENGER_WEIGHT <= MAX_WEIGHT:
+                weight += PASSENGER_WEIGHT
+                passengers.append(destination)
+                print("Passenger boards for floor", destination)
+            else:
+                print("Lift is full. Passenger cannot board.")
+
+        print("Current weight:", weight, "kg")
+
+    print("Lift 2 stops at the ground floor.")
+else:
+    print("ALARM! Lift 2 exceeds the weight limit.")
+# TWO-LIFT SIMULATION: FIVE FLOORS
+
+MAX_WEIGHT = 1300
+PASSENGER_WEIGHT = 60  # Assumed weight per passenger (kg)
+
+lift1_start = 1
+lift1_weight = float(input("Weight of people in Lift 1 at floor 1 (kg): "))
+
+lift2_start = 5
+lift2_weight = float(input("Weight of people in Lift 2 at floor 5 (kg): "))
+
+
+# Collect UP and DOWN destinations at each floor
+up_requests = [[] for _ in range(6)]
+down_requests = [[] for _ in range(6)]
+
+for floor in range(1, 6):
+
+    if floor < 5:
+        answer = input(f"UP button pressed at floor {floor}? (y/n): ")
+
+        while answer.lower() == "y":
+            destination = int(input("Destination floor: "))
+            up_requests[floor].append(destination)
+
+            answer = input("Another destination? (y/n): ")
+
+    if floor > 1:
+        answer = input(f"DOWN button pressed at floor {floor}? (y/n): ")
+
+        while answer.lower() == "y":
+            destination = int(input("Destination floor: "))
+            down_requests[floor].append(destination)
+
+            answer = input("Another destination? (y/n): ")
+
+
+# LIFT 1: FLOOR 1 TO FLOOR 5
+print("\n===== LIFT 1: MOVING UP =====")
+
+weight = lift1_weight
+passengers = []
+
+if weight <= MAX_WEIGHT:
+    for floor in range(lift1_start, 6):
+        print("\nLift 1 reaches floor", floor)
+
+        # Passengers get off at their destination
+        for destination in passengers[:]:
+            if destination == floor:
+                weight -= PASSENGER_WEIGHT
+                passengers.remove(destination)
+                print("Passenger gets off.")
+
+        # Passengers board
+        for destination in up_requests[floor]:
+            if weight + PASSENGER_WEIGHT <= MAX_WEIGHT:
+                weight += PASSENGER_WEIGHT
+                passengers.append(destination)
+                print("Passenger boards for floor", destination)
+            else:
+                print("Lift is full. Passenger cannot board.")
+
+        print("Current weight:", weight, "kg")
+
+    print("Lift 1 stops at floor 5.")
+else:
+    print("ALARM! Lift 1 exceeds the weight limit.")
+
+
+# LIFT 2: FLOOR 5 TO FLOOR 1
+print("\n===== LIFT 2: MOVING DOWN =====")
+
+weight = lift2_weight
+passengers = []
+
+if weight <= MAX_WEIGHT:
+    for floor in range(lift2_start, 0, -1):
+        print("\nLift 2 reaches floor", floor)
+
+        # Passengers get off at their destination
+        for destination in passengers[:]:
+            if destination == floor:
+                weight -= PASSENGER_WEIGHT
+                passengers.remove(destination)
+                print("Passenger gets off.")
+
+        # Passengers board
+        for destination in down_requests[floor]:
+            if weight + PASSENGER_WEIGHT <= MAX_WEIGHT:
+                weight += PASSENGER_WEIGHT
+                passengers.append(destination)
+                print("Passenger boards for floor", destination)
+            else:
+                print("Lift is full. Passenger cannot board.")
+
+        print("Current weight:", weight, "kg")
+
+    print("Lift 2 stops at the ground floor.")
+else:
+    print("ALARM! Lift 2 exceeds the weight limit.")
